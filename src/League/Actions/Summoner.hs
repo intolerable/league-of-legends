@@ -30,4 +30,20 @@ getSummonersBySummonerName ns = do
                      "GET"
   return $ Map.elems (summonerMap :: Map Text Summoner)
 
+getSummonerByID :: SummonerID -> League Summoner
+getSummonerByID n = do
+  ss <- getSummonersByID [n]
+  case ss of
+    s : [] -> return s
+    _ -> LeagueT $ EitherT $ return $ Left $ APIError InvalidResponseError
+
+getSummonersByID :: [SummonerID] -> League [Summoner]
+getSummonersByID is = do
+  let ids = Text.intercalate "," $ map (\(SummonerID i) -> Text.pack $ show i) is
+  (_, r) <- LeagueT $ liftState get
+  summonerMap <- LeagueT $
+    runRoute $ Route ["api", "lol", shortRegion r, "v1.4", "summoner", ids]
+                     [ ]
+                     "GET"
+  return $ Map.elems (summonerMap :: Map Text Summoner)
 
