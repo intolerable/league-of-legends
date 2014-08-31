@@ -13,15 +13,15 @@ import Data.Map (Map)
 import qualified Data.Map as Map
 import qualified Data.Text as Text
 
-getSummonerBySummonerName :: SummonerName -> League Summoner
-getSummonerBySummonerName n = do
-  ss <- getSummonersBySummonerName [n]
+getSummonerByName :: SummonerName -> League Summoner
+getSummonerByName n = do
+  ss <- getSummonersByName [n]
   case ss of
     s : [] -> return s
     _ -> LeagueT $ EitherT $ return $ Left $ APIError InvalidResponseError
 
-getSummonersBySummonerName :: [SummonerName] -> League [Summoner]
-getSummonersBySummonerName ns = do
+getSummonersByName :: [SummonerName] -> League [Summoner]
+getSummonersByName ns = do
   let names = Text.intercalate "," $ map (\(SummonerName x) -> x) ns
   (_, r) <- LeagueT $ liftState get
   summonerMap <- LeagueT $
