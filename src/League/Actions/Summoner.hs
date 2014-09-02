@@ -6,7 +6,6 @@ import League.Types.Summoner
 import League.Types.League
 
 import APIBuilder
-import Control.Monad.Trans.State (get)
 import Control.Monad.Trans.Either (EitherT(..))
 import Data.Text (Text)
 import Data.Map (Map)
@@ -23,7 +22,7 @@ getSummonerByName n = do
 getSummonersByName :: [SummonerName] -> League [Summoner]
 getSummonersByName ns = do
   let names = Text.intercalate "," $ map (\(SummonerName x) -> x) ns
-  (_, r) <- LeagueT $ liftState get
+  (_, r) <- leagueState
   summonerMap <- LeagueT $
     runRoute $ Route ["api", "lol", shortRegion r, "v1.4", "summoner", "by-name", names]
                      [ ]
@@ -40,7 +39,7 @@ getSummonerByID n = do
 getSummonersByID :: [SummonerID] -> League [Summoner]
 getSummonersByID is = do
   let ids = Text.intercalate "," $ map (\(SummonerID i) -> Text.pack $ show i) is
-  (_, r) <- LeagueT $ liftState get
+  (_, r) <- leagueState
   summonerMap <- LeagueT $
     runRoute $ Route ["api", "lol", shortRegion r, "v1.4", "summoner", ids]
                      [ ]

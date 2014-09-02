@@ -6,12 +6,11 @@ import League.Types.Champion
 import League.Types.League
 
 import APIBuilder
-import Control.Monad.Trans.State (get)
 import qualified Data.Text as Text
 
 getAllChampions :: League [Champion]
 getAllChampions = do
-  (_, r) <- LeagueT $ liftState get
+  (_, r) <- leagueState
   ChampionList champions <- LeagueT $
     runRoute $ Route ["api", "lol", shortRegion r, "v1.2", "champion"]
                      [ ]
@@ -20,7 +19,7 @@ getAllChampions = do
 
 getChampion :: ChampionID -> League Champion
 getChampion (ChampionID c) = do
-  (_, r) <- LeagueT $ liftState get
+  (_, r) <- leagueState
   LeagueT $ runRoute $
     Route ["api", "lol", shortRegion r, "v1.2", "champion", Text.pack $ show c ]
           [ ]

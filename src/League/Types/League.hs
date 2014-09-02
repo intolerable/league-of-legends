@@ -2,7 +2,8 @@ module League.Types.League
   ( APIKey(..)
   , League
   , LeagueT(..)
-  , run ) where
+  , run
+  , leagueState ) where
 
 import League.Types.Region
 import League.Types.Error
@@ -10,6 +11,7 @@ import League.Types.Error
 import APIBuilder
 import Control.Applicative
 import Control.Monad.IO.Class
+import Control.Monad.Trans.State (get)
 import Data.Text (Text)
 
 newtype APIKey = APIKey Text
@@ -33,3 +35,5 @@ addAPIKey :: APIKey -> Route -> Route
 addAPIKey (APIKey key) (Route fs ps m) =
   Route fs ("api_key" =. key : ps) m
 
+leagueState :: League (APIKey, Region)
+leagueState = LeagueT $ liftState get
