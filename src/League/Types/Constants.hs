@@ -1,4 +1,5 @@
-module League.Types.Constants where
+module League.Types.Constants
+  ( Map(..) ) where
 
 data Map = SummonersRift
          | SummonersRiftAutumn
