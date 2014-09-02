@@ -14,6 +14,7 @@ library
     League.Actions.Champion
     League.Actions.Summoner
     League.Types
+    League.Types.Champion
     League.Types.Constants
     League.Types.Error
     League.Types.Region
