@@ -10,6 +10,8 @@ cabal-version:       >=1.10
 library
   exposed-modules:
     League
+    League.Actions
+    League.Actions.Champion
     League.Actions.Summoner
     League.Types
     League.Types.Constants
