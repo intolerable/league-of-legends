@@ -1,4 +1,8 @@
-module League.Types.League where
+module League.Types.League
+  ( APIKey
+  , League
+  , LeagueT(..)
+  , run ) where
 
 import League.Types.Region
 import League.Types.Error
