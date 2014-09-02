@@ -1,5 +1,5 @@
 module League.Types.League
-  ( APIKey
+  ( APIKey(..)
   , League
   , LeagueT(..)
   , run ) where
