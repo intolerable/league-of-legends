@@ -12,11 +12,13 @@ library
     League
     League.Actions
     League.Actions.Champion
+    League.Actions.Match
     League.Actions.Summoner
     League.Types
     League.Types.Champion
     League.Types.Constants
     League.Types.Error
+    League.Types.Match
     League.Types.Region
     League.Types.League
     League.Types.Summoner
