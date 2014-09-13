@@ -1,5 +1,9 @@
 module League.Types.Constants
-  ( Map(..) ) where
+  ( Map(..)
+  , MatchMode(..) ) where
+
+import Data.Aeson
+import Data.Monoid
 
 data Map = SummonersRift
          | SummonersRiftAutumn
@@ -32,3 +36,25 @@ fromMapID TwistedTreelineClassic = 4
 fromMapID CrystalScar = 8
 fromMapID TwistedTreeline = 10
 fromMapID HowlingAbyss = 12
+
+data MatchMode = Classic
+               | Odin
+               | ARAM
+               | Tutorial
+               | OneForAll
+               | Ascension
+               | FirstBlood
+  deriving (Show, Read, Eq)
+
+instance FromJSON MatchMode where
+  parseJSON (String s) =
+    case s of
+      "CLASSIC" -> return Classic
+      "ODIN" -> return Odin
+      "ARAM" -> return ARAM
+      "TUTORIAL" -> return Tutorial
+      "ONEFORALL" -> return OneForAll
+      "ASCENSION" -> return Ascension
+      "FIRSTBLOOD" -> return FirstBlood
+      _ -> mempty
+  parseJSON _ = mempty
