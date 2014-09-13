@@ -4,7 +4,7 @@ import League.Types.Region
 import League.Types.Match
 import League.Types.League
 
-import APIBuilder
+import Network.API.Builder
 import qualified Data.Text as Text
 
 getMatch :: MatchID -> League Match

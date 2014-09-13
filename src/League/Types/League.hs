@@ -8,11 +8,11 @@ module League.Types.League
 import League.Types.Region
 import League.Types.Error
 
-import APIBuilder
 import Control.Applicative
 import Control.Monad.IO.Class
 import Control.Monad.Trans.State (get)
 import Data.Text (Text)
+import Network.API.Builder
 
 newtype APIKey = APIKey Text
   deriving (Show, Read, Eq)

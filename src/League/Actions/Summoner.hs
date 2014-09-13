@@ -5,10 +5,10 @@ import League.Types.Region
 import League.Types.Summoner
 import League.Types.League
 
-import APIBuilder
 import Control.Monad.Trans.Either (EitherT(..))
-import Data.Text (Text)
 import Data.Map (Map)
+import Data.Text (Text)
+import Network.API.Builder
 import qualified Data.Map as Map
 import qualified Data.Text as Text
 

@@ -5,7 +5,7 @@ import League.Types.Region
 import League.Types.Champion
 import League.Types.League
 
-import APIBuilder
+import Network.API.Builder
 import qualified Data.Text as Text
 
 getAllChampions :: League [Champion]
