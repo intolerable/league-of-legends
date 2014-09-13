@@ -16,12 +16,19 @@ newtype MatchID = MatchID Integer
 instance FromJSON MatchID where
   parseJSON j = MatchID <$> parseJSON j
 
+data VersionString = VersionString Text
+  deriving (Show, Read, Eq)
+
+instance FromJSON VersionString where
+  parseJSON j = VersionString <$> parseJSON j
+
 data Match = Match { _matchMatchID :: MatchID
                    , _matchRegion :: Region
                    , _matchCreationTime :: Integer
                    , _matchDuration :: Integer
                    , _matchMode :: MatchMode
-                   , _matchSeason :: Season }
+                   , _matchSeason :: Season
+                   , _matchVersion :: VersionString }
   deriving (Show, Read, Eq)
 
 instance Ord Match where
@@ -35,6 +42,7 @@ instance FromJSON Match where
           <*> o .: "matchDuration"
           <*> o .: "matchMode"
           <*> o .: "season"
+          <*> o .: "matchVersion"
   parseJSON _ = mempty
 
 data Season = PreSeason3
