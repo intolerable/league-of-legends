@@ -1,5 +1,7 @@
 module League.Types.Region where
 
+import Data.Aeson
+import Data.Monoid
 import Data.Text (Text)
 
 data Region = BR
@@ -14,6 +16,23 @@ data Region = BR
             | RU
             | Global
   deriving (Show, Read, Eq)
+
+instance FromJSON Region where
+  parseJSON (String s) =
+    case s of
+      "BR" -> return BR
+      "EUNE" -> return EUNE
+      "EUW" -> return EUW
+      "KR" -> return KR
+      "LAS" -> return LAS
+      "LAN" -> return LAN
+      "NA" -> return NA
+      "OCE" -> return OCE
+      "TR" -> return TR
+      "RU" -> return RU
+      "Global" -> return Global
+      _ -> mempty
+  parseJSON _ = mempty
 
 regionalEndpoint :: Region -> Text
 regionalEndpoint BR = "https://br.api.pvp.net"
