@@ -6,7 +6,6 @@ import Data.Aeson
 import Data.Function (on)
 import Data.Monoid
 import Data.Text (Text)
-import Network.API.Builder.Query
 
 newtype SummonerID = SummonerID Integer
   deriving (Show, Read, Eq, Ord)

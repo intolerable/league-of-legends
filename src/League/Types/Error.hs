@@ -1,6 +1,5 @@
 module League.Types.Error where
 
-import Control.Applicative
 import Data.Aeson
 import Data.Monoid
 

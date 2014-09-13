@@ -1,6 +1,5 @@
 module League.Actions.Champion where
 
-import League.Types.Error
 import League.Types.Region
 import League.Types.Champion
 import League.Types.League
