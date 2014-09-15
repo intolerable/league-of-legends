@@ -7,7 +7,7 @@ import League.Types.League
 import Network.API.Builder
 import qualified Data.Text as Text
 
-getMatch :: MatchID -> League Match
+getMatch :: MatchID -> League MatchDetail
 getMatch (MatchID m) = do
   (_, r) <- leagueState
   LeagueT $ runRoute $

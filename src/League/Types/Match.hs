@@ -17,27 +17,28 @@ newtype MatchID = MatchID Integer
 instance FromJSON MatchID where
   parseJSON j = MatchID <$> parseJSON j
 
-data Match = Match { _matchMatchID :: MatchID
-                   , _matchRegion :: Region
-                   , _matchCreationTime :: Integer
-                   , _matchDuration :: Integer
-                   , _matchMode :: MatchMode
-                   , _matchSeason :: Season
-                   , _matchVersion :: Version }
+data MatchDetail = MatchDetail
+  { _match_detailMatchID :: MatchID
+  , _match_detailRegion :: Region
+  , _match_detailCreationTime :: Integer
+  , _match_detailDuration :: Integer
+  , _match_detailMode :: MatchMode
+  , _match_detailSeason :: Season
+  , _match_detailVersion :: Version }
   deriving (Show, Read, Eq)
 
-instance Ord Match where
-  compare = compare `on` _matchMatchID
+instance Ord MatchDetail where
+  compare = compare `on` _match_detailMatchID
 
-instance FromJSON Match where
+instance FromJSON MatchDetail where
   parseJSON (Object o) =
-    Match <$> o .: "matchId"
-          <*> o .: "region"
-          <*> o .: "matchCreation"
-          <*> o .: "matchDuration"
-          <*> o .: "matchMode"
-          <*> o .: "season"
-          <*> o .: "matchVersion"
+    MatchDetail <$> o .: "matchId"
+                <*> o .: "region"
+                <*> o .: "matchCreation"
+                <*> o .: "matchDuration"
+                <*> o .: "matchMode"
+                <*> o .: "season"
+                <*> o .: "matchVersion"
   parseJSON _ = mempty
 
 data Season = PreSeason3
@@ -57,4 +58,4 @@ instance FromJSON Season where
       x -> UnknownSeason x
   parseJSON _ = mempty
 
-makeFields ''Match
+makeFields ''MatchDetail
