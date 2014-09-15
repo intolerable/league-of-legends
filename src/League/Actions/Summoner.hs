@@ -1,6 +1,7 @@
 module League.Actions.Summoner where
 
 import League.Types.Error
+import League.Types.Match
 import League.Types.Region
 import League.Types.Summoner
 import League.Types.League
@@ -45,4 +46,12 @@ getSummonersByID is = do
                      [ ]
                      "GET"
   return $ Map.elems (summonerMap :: Map Text Summoner)
+
+getRecentMatches :: SummonerID -> League MatchSummaries
+getRecentMatches (SummonerID i) = do
+  (_, r) <- leagueState
+  LeagueT $ runRoute $
+    Route ["api", "lol", shortRegion r, "v2.2", "matchhistory", Text.pack $ show i]
+          [ ]
+          "GET"
 
