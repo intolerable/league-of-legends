@@ -4,7 +4,6 @@ module League.Types.Version
 
 import Control.Applicative
 import Data.Aeson
-import Data.Aeson.Types (Parser)
 import Data.Monoid (mempty)
 import Data.Text (Text, splitOn, unpack)
 import Text.Read (readMaybe)
