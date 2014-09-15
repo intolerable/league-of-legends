@@ -2,6 +2,7 @@ module League.Types.Match where
 
 import League.Types.Constants
 import League.Types.Region
+import League.Types.Version
 
 import Control.Applicative
 import Control.Lens
@@ -16,19 +17,13 @@ newtype MatchID = MatchID Integer
 instance FromJSON MatchID where
   parseJSON j = MatchID <$> parseJSON j
 
-data VersionString = VersionString Text
-  deriving (Show, Read, Eq)
-
-instance FromJSON VersionString where
-  parseJSON j = VersionString <$> parseJSON j
-
 data Match = Match { _matchMatchID :: MatchID
                    , _matchRegion :: Region
                    , _matchCreationTime :: Integer
                    , _matchDuration :: Integer
                    , _matchMode :: MatchMode
                    , _matchSeason :: Season
-                   , _matchVersion :: VersionString }
+                   , _matchVersion :: Version }
   deriving (Show, Read, Eq)
 
 instance Ord Match where
