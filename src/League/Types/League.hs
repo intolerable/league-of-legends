@@ -27,7 +27,7 @@ builder = basicBuilder "League of Legends API" . regionalEndpoint
 
 run :: MonadIO m => APIKey -> Region -> LeagueT m a -> m (Either (APIError LeagueError) a)
 run key region (LeagueT act) =
-  runAPI (builder region) (key, region) $ do
+  execAPI (builder region) (key, region) $ do
     customizeRoute $ addAPIKey key
     act
 
