@@ -19,15 +19,15 @@ newtype SummonerName = SummonerName Text
 instance FromJSON SummonerName where
   parseJSON j = SummonerName <$> parseJSON j
 
-data Summoner = Summoner { _summonerSummonerID :: SummonerID
-                         , _summonerName :: SummonerName
-                         , _summonerProfileIconID :: Integer
-                         , _summonerLevel :: Integer }
+data Summoner = Summoner { summonerSummonerID :: SummonerID
+                         , summonerName :: SummonerName
+                         , summonerProfileIconID :: Integer
+                         , summonerLevel :: Integer }
   deriving (Show, Read, Eq)
 makeFields ''Summoner
 
 instance Ord Summoner where
-  compare = compare `on` _summonerSummonerID
+  compare = compare `on` summonerSummonerID
 
 instance FromJSON Summoner where
   parseJSON (Object o) =
