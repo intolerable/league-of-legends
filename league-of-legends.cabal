@@ -22,6 +22,7 @@ library
     League.Types.Region
     League.Types.League
     League.Types.Summoner
+    League.Types.SummonerSpell
     League.Types.Version
   build-depends:
     base == 4.7.*,

@@ -8,3 +8,4 @@ import League.Types.League as Types
 import League.Types.Match as Types
 import League.Types.Region as Types (Region(..))
 import League.Types.Summoner as Types
+import League.Types.SummonerSpell as Types
