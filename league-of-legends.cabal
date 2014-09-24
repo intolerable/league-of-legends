@@ -13,6 +13,7 @@ library
     League.Actions
     League.Actions.Champion
     League.Actions.Match
+    League.Actions.StaticData
     League.Actions.Summoner
     League.Types
     League.Types.Champion
