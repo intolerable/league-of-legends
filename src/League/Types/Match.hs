@@ -18,17 +18,17 @@ instance FromJSON MatchID where
   parseJSON j = MatchID <$> parseJSON j
 
 data MatchDetail = MatchDetail
-  { matchdetailMatchID :: MatchID
-  , matchdetailRegion :: Region
-  , matchdetailCreationTime :: Integer
-  , matchdetailDuration :: Integer
-  , matchdetailMode :: MatchMode
-  , matchdetailSeason :: Season
-  , matchdetailVersion :: Version }
+  { matchDetailMatchID :: MatchID
+  , matchDetailRegion :: Region
+  , matchDetailCreationTime :: Integer
+  , matchDetailDuration :: Integer
+  , matchDetailMode :: MatchMode
+  , matchDetailSeason :: Season
+  , matchDetailVersion :: Version }
   deriving (Show, Read, Eq)
 
 instance Ord MatchDetail where
-  compare = compare `on` matchdetailMatchID
+  compare = compare `on` matchDetailMatchID
 
 instance FromJSON MatchDetail where
   parseJSON (Object o) =
@@ -42,17 +42,17 @@ instance FromJSON MatchDetail where
   parseJSON _ = mempty
 
 data MatchSummary = MatchSummary
-  { matchsummaryMatchID :: MatchID
-  , matchsummaryRegion :: Region
-  , matchsummaryCreationTime :: Integer
-  , matchsummaryDuration :: Integer
-  , matchsummaryMode :: MatchMode
-  , matchsummarySeason :: Season
-  , matchsummaryVersion :: Version }
+  { matchSummaryMatchID :: MatchID
+  , matchSummaryRegion :: Region
+  , matchSummaryCreationTime :: Integer
+  , matchSummaryDuration :: Integer
+  , matchSummaryMode :: MatchMode
+  , matchSummarySeason :: Season
+  , matchSummaryVersion :: Version }
   deriving (Show, Read, Eq)
 
 instance Ord MatchSummary where
-  compare = compare `on` matchsummaryMatchID
+  compare = compare `on` matchSummaryMatchID
 
 instance FromJSON MatchSummary where
   parseJSON (Object o) =

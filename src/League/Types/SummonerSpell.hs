@@ -12,10 +12,10 @@ instance FromJSON SummonerSpellID where
   parseJSON j = SummonerSpellID <$> parseJSON j
 
 data SummonerSpell = SummonerSpell
-  { summonerspellSummonerSpellID :: SummonerSpellID
-  , summonerspellName :: Text
-  , summonerspellKey :: Text
-  , summonerspellDescription :: Text }
+  { summonerSpellSummonerSpellID :: SummonerSpellID
+  , summonerSpellName :: Text
+  , summonerSpellKey :: Text
+  , summonerSpellDescription :: Text }
   deriving (Show, Read, Eq)
 
 instance FromJSON SummonerSpell where

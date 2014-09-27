@@ -11,12 +11,12 @@ newtype ChampionID = ChampionID Integer
 instance FromJSON ChampionID where
   parseJSON j = ChampionID <$> parseJSON j
 
-data Champion = Champion { _championChampionID :: ChampionID
-                         , _championActive :: Bool
-                         , _championRankedPlayEnabled :: Bool
-                         , _championBotEnabled :: Bool
-                         , _championBotMatchMakingEnabled :: Bool
-                         , _championFreeToPlay :: Bool }
+data Champion = Champion { championChampionID :: ChampionID
+                         , championActive :: Bool
+                         , championRankedPlayEnabled :: Bool
+                         , championBotEnabled :: Bool
+                         , championBotMatchMakingEnabled :: Bool
+                         , championFreeToPlay :: Bool }
   deriving (Show, Read, Eq)
 makeFields ''Champion
 
