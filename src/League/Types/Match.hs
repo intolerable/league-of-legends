@@ -1,5 +1,6 @@
 module League.Types.Match where
 
+import League.Internal.TH.Shared
 import League.Types.Constants
 import League.Types.Region
 import League.Types.Version

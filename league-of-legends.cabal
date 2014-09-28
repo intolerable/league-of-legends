@@ -25,6 +25,8 @@ library
     League.Types.Summoner
     League.Types.SummonerSpell
     League.Types.Version
+  other-modules:
+    League.Internal.TH.Shared
   build-depends:
     base == 4.7.*,
     aeson,

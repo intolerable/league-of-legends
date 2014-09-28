@@ -1,5 +1,7 @@
 module League.Types.Summoner where
 
+import League.Internal.TH.Shared
+
 import Control.Applicative
 import Control.Lens
 import Data.Aeson
