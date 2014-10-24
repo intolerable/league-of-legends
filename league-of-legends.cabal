@@ -35,6 +35,7 @@ library
     containers,
     either,
     lens == 4.5.*,
+    template-haskell,
     text,
     transformers
   hs-source-dirs: src

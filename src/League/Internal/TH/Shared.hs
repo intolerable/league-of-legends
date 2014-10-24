@@ -1,16 +1,12 @@
 module League.Internal.TH.Shared where
 
-import Control.Lens
+import League.Internal.TH.FieldGen
 
-data Shared = Shared
-  { sharedName :: ()
-  , sharedMatchID :: ()
-  , sharedRegion :: ()
-  , sharedCreationTime :: ()
-  , sharedDuration :: ()
-  , sharedMode :: ()
-  , sharedSeason :: ()
-  , sharedVersion :: () }
-  deriving (Show, Read, Eq)
-
-makeFields ''Shared
+generates [ "Name"
+          , "MatchID"
+          , "Region"
+          , "CreationTime"
+          , "Duration"
+          , "Mode"
+          , "Season"
+          , "Version" ]
