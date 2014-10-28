@@ -1,14 +1,15 @@
-module League.Internal.TH.FieldGen where
+module League.Internal.TH.FieldGen
+  ( generate
+  , generates ) where
 
-import Control.Monad
 import Data.Char
 import Language.Haskell.TH
 
-generate :: String -> Q [Dec]
+generate :: String -> Q Dec
 generate name = return $ make name
 
-make :: String -> [Dec]
-make name = return $
+make :: String -> Dec
+make name =
   ClassD
     []
     (mkName $ "Has" ++ name)
@@ -29,4 +30,4 @@ make name = return $
                 (VarT s `arrow` AppT (VarT f) (VarT s)))
 
 generates :: [String] -> Q [Dec]
-generates = liftM concat . mapM generate
+generates = mapM generate
