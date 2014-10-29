@@ -47,3 +47,16 @@ library
     FunctionalDependencies
     OverloadedStrings
     TemplateHaskell
+
+test-suite test
+  hs-source-dirs: test
+  main-is: Spec.hs
+  default-extensions: OverloadedStrings
+  default-language: Haskell2010
+  type: exitcode-stdio-1.0
+  build-depends:
+    base == 4.*,
+    Cabal >= 1.16.0,
+    hspec,
+    league-of-legends
+  GHC-options: -Wall -Werror
