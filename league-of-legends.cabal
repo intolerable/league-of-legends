@@ -6,6 +6,9 @@ author:              Fraser Murray
 maintainer:          fraser.m.murray@gmail.com
 build-type:          Simple
 cabal-version:       >=1.10
+extra-source-files:
+  test/data/getAllChampions_example.json
+  test/data/getChampion_example.json
 
 library
   exposed-modules:
@@ -57,6 +60,9 @@ test-suite test
   build-depends:
     base == 4.*,
     Cabal >= 1.16.0,
+    api-builder,
+    bytestring,
     hspec,
-    league-of-legends
+    league-of-legends,
+    lens
   GHC-options: -Wall -Werror
