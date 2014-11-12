@@ -3,6 +3,7 @@ module League.Types.ChampionSpec where
 import League.Types.Champion
 
 import Control.Lens
+import Data.ByteString.Lazy.Char8 (ByteString)
 import Network.API.Builder
 import Test.Hspec
 import qualified Data.ByteString.Lazy.Char8 as ByteString
@@ -12,6 +13,11 @@ main = hspec spec
 
 spec :: Spec
 spec = do
+  describe "ChampionID" $ do
+    it "has a working FromJSON instance" $ do
+      let decode' = decode :: ByteString -> Either (APIError ()) ChampionID
+      decode' "5" `shouldBe` Right (ChampionID 5)
+
   describe "Champion" $ do
     getChampionExample <- runIO $ ByteString.readFile "test/data/getChampion_example.json"
 
