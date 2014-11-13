@@ -62,7 +62,9 @@ test-suite test
     Cabal >= 1.16.0,
     api-builder,
     bytestring,
+    containers,
     hspec,
     league-of-legends,
-    lens
+    lens,
+    text
   GHC-options: -Wall -Werror
