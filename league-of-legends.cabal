@@ -38,6 +38,7 @@ library
     containers,
     either,
     lens == 4.5.*,
+    shared-fields,
     template-haskell,
     text,
     transformers

@@ -1,12 +1,12 @@
 module League.Internal.TH.Shared where
 
-import League.Internal.TH.FieldGen
+import Control.Lens.TH.SharedFields
 
-generates [ "Name"
-          , "MatchID"
-          , "Region"
-          , "CreationTime"
-          , "Duration"
-          , "Mode"
-          , "Season"
-          , "Version" ]
+generateFields [ "Name"
+               , "MatchID"
+               , "Region"
+               , "CreationTime"
+               , "Duration"
+               , "Mode"
+               , "Season"
+               , "Version" ]
